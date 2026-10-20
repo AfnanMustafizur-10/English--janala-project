@@ -1,3 +1,11 @@
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
+
+
 const createElement = (arr) => {
     const htmlElement = arr.map((el) => `<button class="btn btn-soft btn-success">${el}</button>`)
     return htmlElement.join(" ");
@@ -55,8 +63,8 @@ const displayWord = (words) => {
             <p class="font-semibold">Meaning / Pronunciation</p>
             <p class="font-bangla  font-medium">"${word.meaning ? word.meaning : "Meaning Not detected"} / ${word.pronunciation}"</p>
             <div class="flex justify-between items-center">
-               <button onclick="loadWordDetail(${word.id})" class="btn bg-[#1a90ff10] hover:bg-[#1a90ff80]"><i class="fa-solid fa-circle-info"></i></button>
-            <button class="btn bg-[#1a90ff10] hover:bg-[#1a90ff80] "><i class="fa-solid fa-volume"></i></button>
+               <button onclick="loadWordDetail('${word.id}')" class="btn bg-[#1a90ff10] hover:bg-[#1a90ff80]"><i class="fa-solid fa-circle-info"></i></button>
+            <button  onclick="pronounceWord('${word.word}')" class="btn bg-[#1a90ff10] hover:bg-[#1a90ff80] "><i class="fa-solid fa-volume"></i></button>
             </div>
         </div>
         
